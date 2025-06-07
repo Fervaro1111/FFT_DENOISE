@@ -1,0 +1,46 @@
+
+parameter {
+	name = samplingfreqHz
+	value = 48000.0
+}
+parameter {
+	name = fftsize
+	value = 512
+}
+# Number of FFT/IFFTs.
+parameter {
+	name = numffts
+	value = 14
+}
+# Operation Mode: 1: FFT; 2: IFFT
+parameter {
+	name = op_mode
+	value = 1
+}
+# Filter mode: 0: OFF, 1: Filtro pasa-bajas, 2: Threshold, 3: EMD
+parameter {
+	name = filter_mode
+	value = 0
+}
+# Umbral (Modo Umbralización) >1 (dBs) <1 (lineal)
+parameter {
+	name = threshold
+	value = 1.5
+}
+
+# Índice de corte (Modo Filtro pasa-bajas)
+parameter {
+	name = cutoff_freq
+	value = 0.3125
+}
+
+# Banda de transición (Modo Filtro pasa-bajas)
+parameter {
+	name = trans_bw
+	value = 0.02
+}
+# DEBUG Mode: 0: OFF; 1 = inicialización + avisos; 2 = paso a paso, una muestra/coeficiente por ventana; 3 = verboso (muestra todas las ventanas)
+parameter {
+	name = dbg_level
+	value = 2
+}

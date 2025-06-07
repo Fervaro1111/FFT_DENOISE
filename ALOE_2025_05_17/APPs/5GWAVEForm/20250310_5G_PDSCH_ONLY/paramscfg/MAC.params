@@ -1,0 +1,115 @@
+
+# Modes: TX_mode or RX_mode.
+# 	TX 0
+# 	RX 1
+#
+parameter {
+	name = TX_RX_mode
+	value = 0
+}
+
+
+#Coderate
+parameter {
+	name = coderate
+	value = 0.3
+}
+
+#Modulation order
+#4QAM=    2
+#16QAM=   4
+#64QAM=   6
+#256QAM=  8
+
+parameter {
+	name = mod_order
+	value = 2
+	#value = 2
+}
+
+#Number of layers
+parameter {
+	name = num_layers
+	value = 1
+}
+
+#Overhead configured by higher layer parameters xOverhead in #PDSCHServingCellConfig
+parameter {
+	name = Overhead_higherlayer
+	value = 0
+}
+
+#PRB per UE  -----> També s'ha de canviar si es canvia aquí al MAC RX params
+parameter {
+	name = nPRB
+	value = 25
+}
+
+
+#RNTI
+parameter {
+	name = RNTI
+	value = 3
+}
+
+#NID1 --> Parameter for SSS -->Keep it small to avoid excessive calculation time to find it!!!. NID1=0,1,2,3....355. 
+
+parameter {
+	name = NID1
+	value = 1
+}
+
+#NID2 --> Parameter for PSS and SSS.--> NID2=0,1,2.
+parameter {
+	name = NID2
+	value = 1
+}
+
+#q
+parameter {
+	name = q
+	value = 0
+}
+#redundacy version for RATE MATCH
+parameter {
+	name = rv
+	value = 0
+}
+
+#DMRS type
+# 1: Type A
+# 2:Type B -> NOT PROGRAMED
+#
+parameter {
+	name = DMRS_type
+	value = 1
+}
+
+#Additional DMRS symbols
+#0,1,2,3
+parameter {
+	name = Additional_DMRS
+	value = 3
+}
+
+#Coresets OFDM symbols size
+#1,2,3 -->ONLY PREPARED FOR 1 or 2!!
+parameter {
+	name = CORESETS_symbol_size 
+	value = 1
+}
+
+#Carrier Agregation level for DCI
+#1,2,4,8,16
+parameter {
+	name = Agr_lvl_DCI
+	value = 2
+}
+
+
+
+
+
+
+
+

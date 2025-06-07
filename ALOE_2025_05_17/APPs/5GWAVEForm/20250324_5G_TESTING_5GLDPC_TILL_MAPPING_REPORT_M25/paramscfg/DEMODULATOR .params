@@ -1,0 +1,11 @@
+#Modulation order
+#BPSK=    1
+#4QAM=    2
+#16QAM=   4
+#64QAM=   6
+#256QAM=  8
+
+parameter {
+	name = mod_order
+	value = 2
+}

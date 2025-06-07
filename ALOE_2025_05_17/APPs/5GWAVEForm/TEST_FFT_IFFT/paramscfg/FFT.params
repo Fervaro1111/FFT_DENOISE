@@ -1,0 +1,25 @@
+
+parameter {
+	name = samplingfreqHz
+	value = 48000.0
+}
+parameter {
+	name = fftsize
+	value = 512
+}
+# Number of FFT/IFFTs.
+parameter {
+	name = numffts
+	value = 14
+}
+# Operation Mode: 1: FFT; 2: IFFT
+parameter {
+	name = op_mode
+	value = 1
+}
+
+# DEBUG Mode: 0: OFF; 1 = inicialización + avisos; 2 = paso a paso, una muestra/coeficiente por ventana; 3 = verboso (muestra todas las ventanas)
+parameter {
+	name = dbg_level
+	value = 0
+}

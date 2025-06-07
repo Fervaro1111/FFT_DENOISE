@@ -1,0 +1,6 @@
+
+[000]:	Caution input interface control not connected
+
+[000]:	[info at file ../src/5G_INTERLEAVER_PDCCH.c, line 73]: Parameter block_length is 111
+
+[000]:	[info at file ../src/5G_INTERLEAVER_PDCCH.c, line 74]: Parameter block_length 

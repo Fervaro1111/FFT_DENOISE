@@ -1,0 +1,55 @@
+
+# 0: BYPASS, 1: Noise Only
+parameter {
+	name = ChannelModel
+	value = 1
+}
+#	 	0x1: Gaussian Noise Power calculation;						
+#		0x2: Gaussian Noise Variance calculation;
+#		0x3: Gaussian Noise + VARIANCE IMPULSIVITY AND SKEWENESS
+parameter {
+	name = NoiseModel
+	value = 1
+}
+parameter {
+	name = impulsive_prob
+	value = 0.03
+}
+parameter {
+	name = skeweness_factor
+	value = 0.15
+}
+# The SNR real value is SRNreal=SNR-10dBs
+parameter {
+	name = SNR
+	value = 20.0
+}
+parameter {
+	name = NoiseVariance
+	value = 0.0
+}
+
+
+parameter {
+	name = gain
+	value = 1.0
+}
+parameter {
+	name = samplingfreq
+	value = 30720000.0
+}
+
+############# AD ACTIVE ##################################################
+# 1: AD not active Model; 2: AD active Model (generate noise data from starting execution)
+# When AD active always rcv_samples=1024
+parameter {
+	name = AD_Active
+	value = 1
+}
+############# ######### ##################################################
+# 1) NON ACTIVE, 2) ACTIVE. Debug Check the impulse response of SUI channel. Inject a delta at module input
+parameter {
+	name = debugg
+	value = 0
+}
+

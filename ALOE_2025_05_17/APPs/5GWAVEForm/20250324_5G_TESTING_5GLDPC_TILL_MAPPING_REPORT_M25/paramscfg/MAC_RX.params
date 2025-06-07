@@ -1,0 +1,18 @@
+
+# Modes: TX_mode or RX_mode.
+# 	TX 0
+# 	RX 1
+#
+parameter {
+	name = TX_RX_mode
+	value = 1
+}
+
+#PRB per UE -->També s'ha de canviar si es canvia aquí al MAC TX params
+parameter {
+	name = nPRB
+	value = 29
+}
+
+
+

@@ -1,0 +1,10 @@
+
+# Modes: PDCCH or PBCH.
+# 	PDCCH = 0
+# 	PBCH = 1
+#
+parameter {
+	name = PBCH_PDCCH
+	value = 0
+}
+

@@ -1,0 +1,21 @@
+#------------------------------------------------------------------
+#dataPeriod: Period of periodicall ask for data. Aligned with the required output data average throughput.
+parameter {
+	name = dataPeriod
+	value = 28
+}
+#------------------------------------------------------------------
+# delayTOask: Delay to wait before initiating to ask data.
+parameter {
+	name = delayTOask
+	value = 0
+}
+#------------------------------------------------------------------
+# NofDataSampl2ask: NUmber of samples to ask to data source, like data_source_sink module.
+parameter {
+	name = NofDataSampl2ask
+	value = 565
+}
+
+
+

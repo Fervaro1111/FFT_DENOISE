@@ -1,0 +1,16 @@
+
+[000]:	Caution input interface control not connected
+
+[000]:	Caution input interface input_0 not connected
+
+[000]:	Caution input interface input_1 not connected
+
+[000]:	Caution input interface input_2 not connected
+
+[000]:	Caution output interface output_1 not connected
+
+[000]:	Caution output interface output_2 not connected
+
+[000]:	[info at file ../src/MAPPING_V2_UL.c, line 78]: Parameter block_length is 111
+
+[000]:	[info at file ../src/MAPPING_V2_UL.c, line 79]: Parameter block_length 

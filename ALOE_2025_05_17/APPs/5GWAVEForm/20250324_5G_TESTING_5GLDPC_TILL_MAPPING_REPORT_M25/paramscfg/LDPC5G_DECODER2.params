@@ -1,0 +1,28 @@
+parameter {
+	name = matrices_path
+	value = base_graphs
+}
+parameter {
+	name = BG
+	value = 1
+}
+parameter {
+	name = I_LS
+	value = 3
+}
+parameter {
+	name = Z
+	value = 224
+}
+parameter {
+	name = BG2
+	value = 2
+}
+parameter {
+	name = I_LS2
+	value = 0
+}
+parameter {
+	name = Z2
+	value = 256
+}

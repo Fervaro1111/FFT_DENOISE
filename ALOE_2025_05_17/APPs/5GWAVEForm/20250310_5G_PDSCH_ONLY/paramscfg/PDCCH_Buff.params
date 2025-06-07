@@ -1,0 +1,6 @@
+# INTEGER TYPE
+# p_opMODE: BYPASS	0, NORMAL	1
+parameter {
+	name = opMode
+	value = 0
+}

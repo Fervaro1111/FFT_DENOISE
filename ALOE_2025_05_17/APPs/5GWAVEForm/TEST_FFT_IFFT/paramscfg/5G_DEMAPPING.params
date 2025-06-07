@@ -1,0 +1,18 @@
+
+# Modes: TX_mode or RX_mode.
+# 	TX 0
+# 	RX 1
+#
+parameter {
+	name = TX_RX
+	value = 1
+}
+
+
+
+
+
+
+
+
+
