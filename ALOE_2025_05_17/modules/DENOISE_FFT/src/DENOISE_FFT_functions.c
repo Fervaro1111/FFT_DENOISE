@@ -68,6 +68,14 @@ static inline double wiener_gain(double mag2, double N0){
     return mag2/(mag2+N0);   // mag2=|X[k]|^2, N0=potencia de ruido
 }
 
+// Determina si un bin de frecuencia debe preservarse (portadora de datos)
+static inline int is_data_carrier(size_t k, size_t N){
+    // Zona central del espectro: [N/4 , 3N/4]
+    size_t lower = N/4;
+    size_t upper = 3*N/4;
+    return (k>=lower && k<upper);
+}
+
 // =================== 0) FILTRO LOW PASS ===================
 void low_pass_filter(fftw_complex *X, size_t N, float fc_norm, float tb_norm, int dbg)
 {
@@ -110,38 +118,27 @@ void low_pass_filter(fftw_complex *X, size_t N, float fc_norm, float tb_norm, in
 
 // ================ 1) FILTRO AMPLITUDE-THRESHOLD ===============
 void amplitude_threshold(fftw_complex *X, size_t N,
-                         float threshold,
+                         float thr_factor,
                          int dbg)
 {
-    // Encuentra el máximo módulo del espectro
-    double maxMag=0.0;
-    for(size_t k=0; k<N; ++k){
-        double m = cabs(X[k]); 
-        if(m > maxMag) maxMag = m;
-    }
-    if(maxMag==0.0) return;   // Si la señal es toda cero, sale
-
-    // Cálculo del umbral:
-    // Si threshold >= 1.0 → interpreta como dB por debajo del máximo
-    // Si threshold < 1.0  → interpreta como fracción lineal del máximo
-    double thr_lin = (threshold >= 1.0f) ? maxMag * pow(10.0, -threshold/20.0) : maxMag * threshold;
-    double thr2 = thr_lin * 2.0; // Zona de transición
+    // Estimación robusta del suelo de ruido
+    double medMag = median_mag(X, N);
+    double thr = medMag * thr_factor;
 
     if(dbg>=2)
-        fprintf(stderr,"[THR] max|X|=%.3e  thr=%.3e\n", maxMag, thr_lin);
+        fprintf(stderr,"[THR] medMag=%.3e  thr=%.3e\n", medMag, thr);
 
-    // Filtrado coeficiente a coeficiente
     for(size_t k=0; k<N; ++k){
+        if(is_data_carrier(k,N))
+            continue;            // preserva las portadoras de datos
+
         double mag = cabs(X[k]);
-        if(mag<=thr_lin){
-            X[k] = 0.0 + 0.0*I;  // Anula los débiles
-        }else if(mag < thr2){
-            double a = (mag-thr_lin)/(thr2-thr_lin);             // Progresión en la ventana de transición
-            double w = 0.5*(1.0+cos(M_PI*(1.0-a)));              // Ventana cónica
-            X[k] *= w;                                          // Atenúa suavemente
+        if(mag < thr){
+            double scale = mag/thr;      // Soft-threshold
+            X[k] *= scale;
         }
         if(dbg>=3 && (k==0 || k==N/2))
-            fprintf(stderr,"[THR] k=%zu  mag=%.2e → %.2e\n",k, mag, cabs(X[k]));
+            fprintf(stderr,"[THR] k=%zu  |X|=%.2e  scale=%.2f\n", k, mag, (mag<thr?mag/thr:1.0));
     }
 }
 
@@ -156,7 +153,7 @@ void emd_filter(fftw_complex *X, size_t N, int dbg)
         fprintf(stderr,"[EMD] rms=%.3e  med=%.3e\n", p_rms, p_noise);
 
     // Si la SNR es alta (señal >> ruido), NO se filtra (bypass)
-    if(p_rms > 2.0*p_noise){
+    if(p_rms > 3.0*p_noise){
         if(dbg>=2) fprintf(stderr,"[EMD] bypass\n");
         return;
     }

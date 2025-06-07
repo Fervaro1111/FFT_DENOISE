@@ -23,7 +23,7 @@
 #ifndef _FUNCTIONS_H
 #define _FUNCTIONS_H
 void low_pass_filter(fftw_complex *X, size_t N, float fc_norm, float tb_norm, int dbg);
-void amplitude_threshold(fftw_complex *X, size_t N, float threshold, int dbg);
+void amplitude_threshold(fftw_complex *X, size_t N, float thr_factor, int dbg);
 void emd_filter(fftw_complex *X, size_t N, int dbg);
 
 #endif
